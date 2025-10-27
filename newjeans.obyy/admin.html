@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | NewJeans Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, rgb(255, 74, 128) 0%, rgb(255, 120, 160) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: rgb(255, 74, 128);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: rgb(255, 120, 160);
+        }
+
+        .btn-secondary {
+            background: #666;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #555;
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+
+        .products-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .product-img-small {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .modal-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .back-home {
+            background: white;
+            color: rgb(255, 74, 128);
+            border: 2px solid rgb(255, 74, 128);
+        }
+
+        .back-home:hover {
+            background: rgb(255, 74, 128);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Manage products and inventory</p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn back-home" onclick="window.location.href='index.php'">Back to Store</button>
+                <button class="btn btn-danger" onclick="adminLogout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-actions">
+            <button class="btn btn-primary" onclick="openAddProductModal()">+ Add New Product</button>
+            <button class="btn btn-secondary" onclick="exportProducts()">Export Products</button>
+        </div>
+
+        <div class="products-table">
+            <div class="table-header">
+                Product Management (<span id="totalProducts">0</span> products)
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <!-- Products will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeProductModal()">×</button>
+            <h2 id="modalTitle">Add New Product</h2>
+            <form id="productForm" class="modal-form">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label for="productTitle">Product Title *</label>
+                    <input type="text" id="productTitle" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productPrice">Price (Rp) *</label>
+                        <input type="number" id="productPrice" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="album">Album</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="limited edition">Limited Edition</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productShipping">Shipping From *</label>
+                    <input type="text" id="productShipping" placeholder="e.g., Majalengka, Indonesia" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productImage">Image URL *</label>
+                    <input type="url" id="productImage" placeholder="https://..." required>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="productSoldOut">
+                        <span>Mark as Sold Out</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
