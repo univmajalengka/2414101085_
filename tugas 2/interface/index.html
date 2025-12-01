@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paralayang Majalengka - Wisata Penerbangan Terbaik</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Paralayang Majalengka</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+                    <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                    <li><a href="#video" class="nav-link">Video</a></li>
+                    <li><a href="#paket" class="nav-link">Paket Wisata</a></li>
+                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Paralayang Majalengka</h1>
+            <p>Rasakan Sensasi Terbang di Atas Keindahan Alam Majalengka</p>
+            <div class="location-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Desa Sidamukti, Kecamatan Majalengka, Kabupaten Majalengka, Jawa Barat</span>
+            </div>
+            <a href="#paket" class="btn-primary">Lihat Paket Wisata</a>
+        </div>
+    </section>
+
+    <!-- Galeri Foto Slider -->
+    <section id="galeri" class="galeri">
+        <div class="container">
+            <h2 class="section-title">Galeri Pemandangan</h2>
+            <p class="section-subtitle">Keindahan alam Majalengka dari ketinggian</p>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slide active">
+                        <img src="https://wallpapers.com/images/hd/paragliding-in-austria-hz1vvvb7rgbjh37l.jpg" alt="Pemandangan Gunung">
+                        <div class="slide-caption">
+                            <h3>Paralayang Asli Majalengka</h3>
+                            <p>Nikmati keindahan pegunungan dari ketinggian</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://wallpaperaccess.com/full/2189910.jpg" alt="Sunset Indah">
+                        <div class="slide-caption">
+                            <h3>Suasana Per-sawahan</h3>
+                            <p>Nikmati pemandangan hijau asri Majalengka</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://wallpapercave.com/wp/wp2158908.jpg" alt="Puncak Tertinggi">
+                        <div class="slide-caption">
+                            <h3>Suasana Sejuk Majalengka</h3>
+                            <p>Nikmati puncak bukit di kota angin</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tombol Navigasi -->
+                <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Indikator Dots -->
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="video-section">
+        <div class="container">
+            <h2 class="section-title">Video Pengalaman Terbang</h2>
+            <p class="section-subtitle">Saksikan keseruan aktivitas paralayang</p>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/JnJaNLYkBI0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDlKUlBLhe39g023PPiMGIOYCV5ng');">
+                        <a href="https://youtu.be/JnJaNLYkBI0?si=x-nBPttk6u2f9oPp" target="_blank" class="play-button">
+                            <i class="fab fa-youtube"></i>
+                            <span>Tonton di YouTube</span>
+                        </a>
+                    </div>
+                    <h3>Pengalaman Paralayang</h3>
+                    <p>Klik untuk menonton video pengalaman paralayang di Majalengka</p>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/ZaEHB3Jh9Fg/maxresdefault.jpg');">
+                        <a href="https://youtu.be/ZaEHB3Jh9Fg" target="_blank" class="play-button">
+                            <i class="fab fa-youtube"></i>
+                            <span>Tonton di YouTube</span>
+                        </a>
+                    </div>
+                    <h3>Keindahan dari Udara</h3>
+                    <p>Lihat pemandangan indah Majalengka dari ketinggian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paket Wisata -->
+    <section id="paket" class="paket">
+        <div class="container">
+            <h2 class="section-title">Paket Wisata Kami</h2>
+            <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan Anda</p>
+            <div class="paket-grid">
+                <div class="paket-card">
+                    <div class="paket-header">
+                        <i class="fas fa-star"></i>
+                        <h3>Paket Basic</h3>
+                    </div>
+                    <div class="paket-price">
+                        <div class="price-wrapper">
+                            <span class="price">Rp 100.000</span>
+                            <span class="duration">/ orang</span>
+                        </div>
+                    </div>
+                    <ul class="paket-features">
+                        <li><i class="fas fa-check"></i> Durasi terbang 10-15 menit</li>
+                        <li><i class="fas fa-check"></i> Instruktur berpengalaman</li>
+                        <li><i class="fas fa-check"></i> Dokumentasi foto & video</li>
+                        <li><i class="fas fa-check"></i> Peralatan safety lengkap</li>
+                    </ul>
+                    <button class="btn-paket">Pesan Sekarang</button>
+                </div>
+
+                <div class="paket-card featured">
+                    <div class="paket-header">
+                        <i class="fas fa-crown"></i>
+                        <h3>Paket Premium</h3>
+                    </div>
+                    <div class="paket-price">
+                        <div class="price-wrapper">
+                            <span class="price">Rp 700.000</span>
+                            <span class="duration">/ 10 orang</span>
+                        </div>
+                    </div>
+                    <ul class="paket-features">
+                        <li><i class="fas fa-check"></i> Durasi terbang 20-25 menit</li>
+                        <li><i class="fas fa-check"></i> Instruktur profesional</li>
+                        <li><i class="fas fa-check"></i> Dokumentasi foto & video</li>
+                        <li><i class="fas fa-check"></i> Peralatan safety premium</li>
+                        <li><i class="fas fa-check"></i> Bisa 2 kali naik</li>
+                        <li><i class="fas fa-check"></i> Snack & minuman</li>
+                    </ul>
+                    <button class="btn-paket">Pesan Sekarang</button>
+                </div>
+
+                <div class="paket-card">
+                    <div class="paket-header">
+                        <i class="fas fa-users"></i>
+                        <h3>Paket Grup</h3>
+                    </div>
+                    <div class="paket-price">
+                        <div class="price-wrapper">
+                            <span class="price">Rp 400.000</span>
+                            <span class="duration">/ 5 orang</span>
+                        </div>
+                    </div>
+                    <ul class="paket-features">
+                        <li><i class="fas fa-check"></i> Durasi terbang 15-20 menit</li>
+                        <li><i class="fas fa-check"></i> Instruktur berpengalaman</li>
+                        <li><i class="fas fa-check"></i> Dokumentasi grup</li>
+                        <li><i class="fas fa-check"></i> Peralatan safety lengkap</li>
+                        <li><i class="fas fa-check"></i> Diskon grup</li>
+                    </ul>
+                    <button class="btn-paket">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="kontak">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="kontak-grid">
+                <div class="kontak-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Gunung Panyaweuyan, Majalengka, Jawa Barat</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>+62 881-5871-831</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@paralayangmajalengka.com</p>
+                        </div>
+                    </div>
+                    <div class="sosmed">
+                        <a href="https://www.instagram.com/oyby._?igsh=amJiaHYzOWZwdjY4"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@obyy77?si=wp2-v3Kqi_jQeZ50"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="kontak-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Nama Lengkap" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="No. Telepon" required>
+                        <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+                        <button type="submit" class="btn-submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Paralayang Majalengka - Wisata Penerbangan Terbaik di Jawa Barat</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
